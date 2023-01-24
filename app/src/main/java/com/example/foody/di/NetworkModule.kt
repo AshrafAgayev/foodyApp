@@ -1,18 +1,17 @@
 package com.example.foody.di
 
-import android.text.format.Time
-import com.example.foody.Constants.Companion.BASE_URL
+import com.example.foody.util.Constants.Companion.BASE_URL
 import com.example.foody.FoodRecipesApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ActivityComponent
-import dagger.hilt.android.internal.managers.ApplicationComponentManager
 import dagger.hilt.components.SingletonComponent
+import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
+import java.util.logging.Logger
 import javax.inject.Singleton
 
 @Module
