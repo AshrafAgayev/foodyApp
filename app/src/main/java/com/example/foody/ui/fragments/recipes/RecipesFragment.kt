@@ -7,21 +7,24 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.viewModels
-import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.example.foody.MainViewModel
+import com.example.foody.viewmodels.MainViewModel
 import com.example.foody.adapters.RecipesAdapter
 import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.util.Constants.Companion.API_KEY
 import com.example.foody.util.NetworkResult
+import com.example.foody.viewmodels.RecipesViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class RecipesFragment : Fragment() {
 
+
     private val adapter by lazy { RecipesAdapter() }
     lateinit var binding: FragmentRecipesBinding
 
+
+    private val recipesViewModel: RecipesViewModel by viewModels()
     private val  viewmodel: MainViewModel by viewModels()
 
     override fun onCreateView(
@@ -44,7 +47,7 @@ class RecipesFragment : Fragment() {
     }
 
     private fun getRecipesData() {
-        viewmodel.getRecipes(applyQueries())
+        viewmodel.getRecipes(recipesViewModel.applyQueries())
 
         viewmodel.recipesResponse.observe(viewLifecycleOwner) { response ->
             when (response) {
@@ -67,19 +70,6 @@ class RecipesFragment : Fragment() {
                 }
             }
         }
-    }
-
-    private fun applyQueries(): HashMap<String, String> {
-        val queries: HashMap<String, String> = HashMap()
-
-        queries["number"] = "50"
-        queries["apiKey"] = API_KEY
-        queries["type"] = "snack"
-        queries["diet"] = "vegan"
-        queries["fillIngredients"] = "true"
-        queries["addRecipeInformation"] = "true"
-
-        return queries
     }
 
 
