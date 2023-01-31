@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
+import com.example.foody.databinding.FragmentRecipesBinding
 import com.example.foody.databinding.RecipesRowLayoutBinding
 import com.example.foody.model.RecipeResponse
 import com.example.foody.model.Result
@@ -16,7 +17,6 @@ class RecipesAdapter: RecyclerView.Adapter<RecipesAdapter.RecipeViewHolder>() {
     class RecipeViewHolder (val binding: RecipesRowLayoutBinding):RecyclerView.ViewHolder(binding.root) {
 
         fun bind(result: Result){
-
             binding.result = result
             binding.executePendingBindings()
         }

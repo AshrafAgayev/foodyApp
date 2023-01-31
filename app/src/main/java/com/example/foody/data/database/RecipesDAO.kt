@@ -1,9 +1,10 @@
-package com.example.foody
+package com.example.foody.data.database
 
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.example.foody.model.RecipeResponse
 import com.example.foody.model.Result
 import kotlinx.coroutines.flow.Flow
 
@@ -11,8 +12,8 @@ import kotlinx.coroutines.flow.Flow
 interface RecipesDAO {
 
     @Query("SELECT * FROM recipes_table ORDER by id ASC")
-    suspend fun readRecipes(): Flow<List<Result>>
+     fun readRecipes(): Flow<List<RecipesEntity>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun insertRecipe()
+    suspend fun insertRecipe(recipe: RecipesEntity)
 }

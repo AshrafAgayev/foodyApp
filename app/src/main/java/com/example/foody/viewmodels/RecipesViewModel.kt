@@ -10,6 +10,7 @@ import com.example.foody.util.Constants.Companion.QUERY_FILL_INGRIDIENTS
 import com.example.foody.util.Constants.Companion.QUERY_NUMBER
 import com.example.foody.util.Constants.Companion.QUERY_RECIPE_INFO
 import com.example.foody.util.Constants.Companion.QUERY_TYPE
+import dagger.hilt.android.lifecycle.HiltViewModel
 
 class RecipesViewModel(application: Application) : AndroidViewModel(application){
 
